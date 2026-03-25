@@ -2,27 +2,27 @@
 let
   inherit (import ./vendor/pyproject.nix/lib/util.nix { inherit lib; }) splitComma;
 
-  fromTOML = builtins.fromTOML or
-    (
-      toml: builtins.fromJSON (
-        builtins.readFile (
-          pkgs.runCommand "from-toml"
-            {
-              inherit toml;
-              allowSubstitutes = false;
-              preferLocalBuild = true;
-            }
-            ''
-              ${pkgs.remarshal}/bin/remarshal \
-                -if toml \
-                -i <(echo "$toml") \
-                -of json \
-                -o $out
-            ''
-        )
-      )
-    );
-  readTOML = path: fromTOML (builtins.readFile path);
+  # fromTOML = builtins.fromTOML or
+  #   (
+  #     toml: builtins.fromJSON (
+  #       builtins.readFile (
+  #         pkgs.runCommand "from-toml"
+  #           {
+  #             inherit toml;
+  #             allowSubstitutes = false;
+  #             preferLocalBuild = true;
+  #           }
+  #           ''
+  #             ${pkgs.remarshal}/bin/remarshal \
+  #               -if toml \
+  #               -i <(echo "$toml") \
+  #               -of json \
+  #               -o $out
+  #           ''
+  #       )
+  #     )
+  #   );
+  readTOML = path: lib.fromTOML (lib.readFile path);
 
   #
   # Returns the appropriate manylinux dependencies and string representation for the file specified
