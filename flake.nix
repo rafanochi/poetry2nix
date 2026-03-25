@@ -4,7 +4,8 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     # Last working commit from nixos-small-unstable
-    nixpkgs.url = "github:xinux-org/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:xinux-org/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs?rev=5f7ca9ab52cf303ec12876e19150cb079046fa0b";
 
     treefmt-nix.url = "github:numtide/treefmt-nix";
     treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
