@@ -33,7 +33,7 @@
     in
     {
       overlays.default = nixpkgs.lib.composeManyExtensions [ (import ./overlay.nix) ];
-      lib.mkPoetry2Nix = { pkgs }: import ./default.nix { inherit pkgs; };
+      # lib.mkPoetry2Nix = { pkgs }: import ./default.nix { inherit pkgs; };
 
       githubActions =
         let
