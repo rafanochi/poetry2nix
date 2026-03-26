@@ -22,7 +22,7 @@ let
   #       )
   #     )
   #   );
-  readTOML = path: lib.fromTOML (lib.readFile path);
+  readTOML = path: pkgs.lib.fromTOML (lib.readFile path);
 
   #
   # Returns the appropriate manylinux dependencies and string representation for the file specified
